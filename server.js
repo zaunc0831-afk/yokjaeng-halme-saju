@@ -367,11 +367,11 @@ maxOutputTokens: 1100
 const geminiData = await geminiResponse.json();
 
 if (!geminiResponse.ok) {
-  console.error(
-    'Gemini API error:',
-    geminiResponse.status,
-    JSON.stringify(geminiData, null, 2)
-  );
+console.error(
+  'Gemini API error:',
+  geminiResponse.status,
+  JSON.stringify(geminiData, null, 2)
+);
 
   const apiError = new Error(
     geminiData?.error?.message || 'Gemini API 요청에 실패했어.'
@@ -422,5 +422,5 @@ res.status(500).json({ error: msg });
 });
 
 app.listen(port, () => {
-console.log(`Saju app listening on $DIL1`);
+  console.log(`Saju app listening on ${port}`);
 });
