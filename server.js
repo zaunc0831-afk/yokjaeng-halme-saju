@@ -340,11 +340,18 @@ maxOutputTokens: 1100
 const geminiData = await geminiResponse.json();
 
 if (!geminiResponse.ok) {
-const apiError = new Error(
-geminiData?.error?.message || 'Gemini API 요청에 실패했어.'
-);
-apiError.status = geminiResponse.status;
-throw apiError;
+  console.error(
+    'Gemini API error:',
+    geminiResponse.status,
+    JSON.stringify(geminiData, null, 2)
+  );
+
+  const apiError = new Error(
+    geminiData?.error?.message || 'Gemini API 요청에 실패했어.'
+  );
+
+  apiError.status = geminiResponse.status;
+  throw apiError;
 }
 
 const outputText = geminiData?.candidates?.[0]?.content?.parts
