@@ -101,7 +101,7 @@ error: '지원하는 생년월일 범위는 1800~2100년이야.'
 }
 
 if (
-!/^(INTJ|INTP|ENTJ|ENTP|INFJ|INFP|ENFJ|ENFP|ISTJ|ISFJ|ESTJ|ESFJ|ISTP|ISFP|ESTP)$/.test(mbti || '')
+!/^(INTJ|INTP|ENTJ|ENTP|INFJ|INFP|ENFJ|ENFP|ISTJ|ISFJ|ESTJ|ESFJ|ISTP|ISFP|ESTP|ESFP)$/.test(mbti || '')
 ) {
 return res.status(400).json({
 error: 'MBTI를 골라라.'
@@ -388,5 +388,5 @@ res.status(500).json({ error: msg });
 });
 
 app.listen(port, () => {
-console.log(Saju app listening on ${port});
+console.log(`Saju app listening on $DIL1`);
 });
