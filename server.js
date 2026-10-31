@@ -308,7 +308,34 @@ MBTI: ${mbti}
 만세력 계산 데이터: ${JSON.stringify(payload)}`;
 
 const geminiResponse = await fetch(
-  `https://generativelanguage.googleapis.com/v1beta/models/$DIL0:generateContent`,
+  `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+  {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-goog-api-key': process.env.GEMINI_API_KEY
+    },
+    body: JSON.stringify({
+      systemInstruction: {
+        parts: [
+          {
+            text: 'You are a helpful assistant that follows the requested JSON output format.'
+          }
+        ]
+      },
+      contents: [
+        {
+          role: 'user',
+          parts: [{ text: prompt }]
+        }
+      ],
+      generationConfig: {
+        responseMimeType: 'application/json',
+        maxOutputTokens: 1100
+      }
+    })
+  }
+);
 {
 method: 'POST',
 headers: {
