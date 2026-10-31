@@ -16,8 +16,9 @@ const app = express();
 app.disable('x-powered-by');
 app.use(express.json({ limit: '20kb' }));
 app.use(express.static(path.join(__dirname, 'public')));
-const port = Number(process.env.PORT		3000);
-const hourlyLimit = Number(process.env.RATE_LIMIT_PER_HOUR		20);
+const port = Number(process.env.PORT || 3000);
+const hourlyLimit = Number(process.env.RATE_LIMIT_PER_HOUR || 20);
+const model = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
 
 const buckets = new Map();
 
